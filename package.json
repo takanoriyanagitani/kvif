@@ -4,11 +4,16 @@
   "description": "key value interface with optional checksum",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "codecov": "codecov"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/takanoriyanagitani/kvif.git"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "keywords": [
     "key",
@@ -26,6 +31,7 @@
   },
   "homepage": "https://github.com/takanoriyanagitani/kvif#readme",
   "devDependencies": {
+    "codecov": "^3.6.1",
     "jest": "^24.9.0"
   }
 }

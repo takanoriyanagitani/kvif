@@ -25,3 +25,7 @@ jobs:
       run: npm test
       env:
         CI: true
+    - name: codecov
+      run: npm run codecov
+      env:
+        CODECOV_TOKEN: 2efe2a74-64f6-40d2-a2dd-c91db03f2db2
