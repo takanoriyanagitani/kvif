@@ -1,2 +1,2 @@
 # kvif
-key value interface
+key value interface with optional checksum
