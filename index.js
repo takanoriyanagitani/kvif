@@ -19,9 +19,9 @@ kvif.get = function(db, key, cb){
   const ch = check_hash || kvif.check_hash_default
   ch(db, function(e){
     switch(e){
-      case default:   return cb(e)
-      case undefined: return get(key, cb)
+      default:        return cb(e)
       case null:      return get(key, cb)
+      case undefined: return get(key, cb)
     }
   })
 }

@@ -4,7 +4,7 @@
   "description": "key value interface with optional checksum",
   "main": "index.js",
   "scripts": {
-    "test": "echo 'ok'"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
