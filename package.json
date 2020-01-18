@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/takanoriyanagitani/kvif/issues"
   },
-  "homepage": "https://github.com/takanoriyanagitani/kvif#readme"
+  "homepage": "https://github.com/takanoriyanagitani/kvif#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
 }
