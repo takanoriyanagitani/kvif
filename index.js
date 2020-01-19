@@ -8,15 +8,15 @@
 
 const kvif = {}
 
-kvif.check_hash_default = function(map_like, cb){ cb(null) }
+kvif.check_hash_default = function(db, cb){ cb(null) }
 
-kvif.get = function(map_like, key, cb){
+kvif.get = function(db, key, cb){
   const {
     get,
     check_hash,
-  } = map_like
+  } = db
   const ch = check_hash || kvif.check_hash_default
-  ch(map_like, function(e){
+  ch(db, function(e){
     switch(e){
       default:        return cb(e)
       case null:      return get(key, cb)

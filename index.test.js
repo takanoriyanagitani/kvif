@@ -76,7 +76,7 @@ describe("get", () => {
       const m = {
         map: new Map(),
         get: (key, cb) => cb(null, m.map.get(key)),
-        check_hash: (map_like, cb) => cb(undefined),
+        check_hash: (db, cb) => cb(undefined),
       }
       kvif.get(m, undefined, (e, value) => {
         expect(e).toBe(null)
@@ -88,7 +88,7 @@ describe("get", () => {
       const m = {
         map: new Map(),
         get: (key, cb) => cb(null, m.map.get(key)),
-        check_hash: (map_like, cb) => cb(new Error("data corruption.")),
+        check_hash: (db, cb) => cb(new Error("data corruption.")),
       }
       kvif.get(m, undefined, (e, value) => {
         expect(typeof(e)).toBe("object")
