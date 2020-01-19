@@ -6,18 +6,17 @@
   else  global.kvif    = factory()
 })(this, (function(){
 
-const kvif = {
-}
+const kvif = {}
 
-kvif.check_hash_default = function(db, cb){ cb(true) }
+kvif.check_hash_default = function(map_like, cb){ cb(null) }
 
-kvif.get = function(db, key, cb){
+kvif.get = function(map_like, key, cb){
   const {
     get,
     check_hash,
-  } = db
+  } = map_like
   const ch = check_hash || kvif.check_hash_default
-  ch(db, function(e){
+  ch(map_like, function(e){
     switch(e){
       default:        return cb(e)
       case null:      return get(key, cb)
