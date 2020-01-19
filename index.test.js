@@ -180,6 +180,34 @@ describe("factory", () => {
 
     })
 
+    describe("get", () => {
+      const db = kvif.factory.new_checked_db_from_map_like(m)
+
+      it("empty", () => {
+        db.get("", (e, value) => {
+          expect(e).toBe(null)
+          expect(value).toBe("")
+        })
+      })
+
+      it("no corruption", () => {
+        db.get("k0", (e, value) => {
+          expect(e).toBe(null)
+          expect(value).toBe("123")
+        })
+      })
+
+      it("corruption", () => {
+        m.set("k1.content", "123")
+        m.set("k1.sha512", "4c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2")
+        db.get("k1", (e, value) => {
+          expect(typeof(e)).toBe("object")
+          expect(e.message).toBe("data corruption.")
+        })
+      })
+
+    })
+
   })
 
 })

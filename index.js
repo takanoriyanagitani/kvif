@@ -51,6 +51,16 @@ kvif.factory = {
         map_like.set(kh, c2h(value))
         cb(null)
       },
+      get: (key, cb) => {
+        const kc = ncn(key)
+        const kh = nhn(key)
+        const c  = map_like.get(kc)
+        const h  = map_like.get(kh)
+        switch(h === c2h(c)){
+          case false: return cb(new Error("data corruption."), undefined)
+          case  true: return cb(null                         ,         c)
+        }
+      },
     }
   },
 }
