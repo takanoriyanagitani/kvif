@@ -25,6 +25,36 @@ kvif.get = function(db, key, cb){
   })
 }
 
+kvif.content2hash = function(content=Buffer.allocUnsafe(0), algorithm="sha512", encoding="hex"){
+  const hash = require("crypto").createHash(algorithm || "sha512")
+  hash.update(content || Buffer.allocUnsafe(0))
+  return hash.digest(encoding || "hex")
+}
+
+kvif.factory = {
+  new_db_from_map_like: map_like => {
+    return {
+      get: (key, cb) => cb(null, map_like.get(key))
+    }
+  },
+  new_checked_db_from_map_like: (map_like, new_content_name, new_hash_name, content2hash) => {
+    const d_ncn = name => name + ".content"
+    const d_nhn = name => name + ".sha512"
+    const ncn = new_content_name || d_ncn
+    const nhn = new_hash_name    || d_nhn
+    const c2h = content2hash     || kvif.content2hash
+    return {
+      set: (key, value, cb) => {
+        const kc = ncn(key)
+        const kh = nhn(key)
+        map_like.set(kc, value)
+        map_like.set(kh, c2h(value))
+        cb(null)
+      },
+    }
+  },
+}
+
 return kvif
 
 }))
