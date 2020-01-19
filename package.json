@@ -1,6 +1,6 @@
 {
   "name": "kvif",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "key value interface with optional checksum",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,17 @@
     "interface",
     "key-value-interface",
     "integrity",
-    "checksum"
+    "checksum",
+    "Map",
+    "ecc",
+    "non-ecc",
+    "ecc-memory",
+    "non-ecc-memory",
+    "in-memory",
+    "in-memory-db",
+    "sha",
+    "sha512",
+    "sha-512"
   ],
   "author": "takanori.yanagitani@gmail.com",
   "license": "ISC",
